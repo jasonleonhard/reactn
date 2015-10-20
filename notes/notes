@@ -36,3 +36,24 @@ index
 Serve .html with firefox localhost, pserver, or gulp
 gulp
   //https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js
+
+
+Component Life Cycle: Mounting
+  getDefaultProps     called once and set props
+  getInitialState     called once and set state
+  componentWillMount  last chance to affect state before render
+  render              only req method
+  componentDidMount   after successful mount, can now access DOM
+
+Component Life Cycle: Update
+  componentWillReceiveProps can change object and update state  
+  shouldComponentUpdate     invoked right before render, often to inhance preformance
+  componentWillUpdate       ditto
+  render                    can use to update component
+  componentDidUpdate        after all updates
+
+Component Life Cycle: Unmounting
+  componentWillUnmount      can clean up DOM elements, invalidate timers, 
+                            can call on parent to unmount children
+
+
