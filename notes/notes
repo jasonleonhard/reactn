@@ -1,7 +1,27 @@
-JSXTrasformer is great for development, but react-tools for production.... so just preprocess all css...
-otherwise you will have to 
+script and link tags for react and JSXTransformer OR
+  JSXTrasformer is great for development, but react-tools for production.... so just preprocess all css...otherwise you will have to 
+use npm or bower and load in that way...
+  sudo npm install -g react-tools # module to not require jsx but just old js
 
-sudo npm install -g react-tools # module to not require jsx but just old js
+use pserver & localhost:8000
+create html
+  must have 
+    <div id='react-container'></div>
+  can have 
+    inline script like this
+      <script type="text/jsx"> anything to react here </script>
+    or external js/Note.js file like this 
+      <script src="js/Note.js" type="text/jsx" ></script> 
+      Template.js is great example of how to start
+
+consider 
+  adding custom css...
+  npm init
+
+
+
+
+
 
 build ( React.createElement("div", null, ... )-> js
   helloworld.js
@@ -16,5 +36,3 @@ index
 Serve .html with firefox localhost, pserver, or gulp
 gulp
   //https://scotch.io/tutorials/automate-your-tasks-easily-with-gulp-js
-
-

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://fb.me/react-0.13.3.min.js"></script>
+        <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+        <title>React Components</title>
+    </head>
+    <body>
+    <div id="react-container"></div>
+
+    <!-- component checkbox( always render for components and you just React.render below...) 
+    STATE: getInitialState and handleCheck -->
+    <script type="text/jsx">
+      var Checkbox = React.createClass({
+        
+        render: function() {
+            var msg; 
+            if(this.state.checked) { msg = "checked"; }                // shows checked if state is checked
+            else { msg = "unchecked"; }
+           
+            return (
+                <div>
+                    <input type="checkbox" onChange={this.handleCheck} // when clicked checks check state, and aligns checked message and box
+                                           defaultChecked={this.state.checked}/> 
+                    <p>This box is {msg}.</p> 
+                </div>);
+        },
+        
+        getInitialState: function() {
+            return {checked: false}                                    // starts unchecked
+        },
+        
+        handleCheck: function() {
+            this.setState({checked: !this.state.checked}) // setState offers user updates from event handlers. then !this... toggles
+        }
+      });
+
+      React.render(<Checkbox />,
+        document.getElementById('react-container'));
+    </script>
+
+    </body>
+</html>
