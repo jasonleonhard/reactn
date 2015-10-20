@@ -19,7 +19,7 @@ var Note = React.createClass({
     },
     remove: function(){
         this.props.onRemove(this.props.index);
-        // alert('removing note');         
+        // alert('removing note');
         // this.setState({removing: true});
     },
     renderDisplay: function() {
@@ -79,17 +79,24 @@ var Board = React.createClass({
             }
         }
     },
-    // notes array becomes the vies sticky notes
+    // notes array becomes the views sticky notes (notes can be prepopulated here)
     getInitialState: function() {
         return {
             notes: [
-            'Send Resume + Cover Letter',
-            'Call Airbnb',
-            'Keep an eye on email and phone',
-            'Tech Interview'
+            // 'Send Resume + Cover Letter',
+            // 'Call Airbnb',
+            // 'Keep an eye on email and phone',
+            // 'Tech Interview'
             ]
         };
 
+    },
+    // removed above auto populating notes for this function
+    // save state in array, push text to array, update state of notes in array
+    add: function(text) {
+        var arr = this.state.notes;
+        arr.push(text);
+        this.setState({notes: arr});
     },
     // store notes state, set current array position to newText, update state of notes array
     update: function(newText, i) {
@@ -120,6 +127,8 @@ var Board = React.createClass({
         return( 
             <div className="board">
                 {this.state.notes.map(this.eachNote)}
+                    <button className="btn btn-sm btn-success glyphicon glyphicon-plus"
+                        onClick={this.add.bind(null, "new note")}> </button>
             </div>
         );
         // return( 
@@ -136,7 +145,6 @@ var Board = React.createClass({
 // render component 1 & 2 simultaneously 
 React.render(<Board count={10}/>, 
     document.getElementById('react-container'));
-
 
 // // render component 2
 // React.render(<Board count={10}/>, 
