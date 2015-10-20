@@ -41,7 +41,9 @@ div.note {
     width: 150px;
     background-color: yellow;
     margin: 2px 0;
-    position: relative;
+    /*position: relative;*/
+    /*based on this.style calcuations in componentWillMount*/
+        position: absolute; 
     cursor: -webkit-grab;
     -webkit-box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
     box-shadow: 5px 5px 15px 0 rgba(0, 0, 0, .2);
@@ -83,3 +85,5 @@ div.note > textarea {
     top: 10px;
     right: 10px;
 }
+
+/* make all notes fit screen on resize, no overflow */
