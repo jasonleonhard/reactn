@@ -8,13 +8,12 @@ var Note = React.createClass({
     },
     edit: function(){
         // alert('editing note');       // <button onClick={this.edit}
-        this.setState({editing: true}); // can edit while true
+        this.setState({editing: true})  // can edit while true
     },
     save: function() {
         // alert('saving note');
         var val = this.refs.newText.getDOMNode().value; // newText variable will grab value of that text area
         alert('saving note not fully implimented\n' + val);
-
         this.setState({editing: false}); // when saved no more editing
     },
     remove: function(){
@@ -77,22 +76,41 @@ var Board = React.createClass({
             }
         }
     },
+    getInitialState: function() {
+        return {
+            notes: [
+            'Send Resume and Cover Letter',
+            'Call Airbnb',
+            'Keep an eye on email and phone',
+            'Tech Interview'
+            ]
+        };
+
+    },
+    // map creates new array by calling function on every element in array, 
+    // i and note allow us to display all notes by index
     render: function() {
-        return <div className="board">{this.props.count}</div>
+        return( 
+            <div className="board">
+                {this.state.notes.map(function(note,i){ 
+                    return ( <Note key={i}>{note}</Note>);
+                })}
+            </div>
+        );
+        // return <div className="board">{this.props.count}</div>
     }
 });
 
-
-// render component 2
-// React.render(<Board count={10}/>, 
-//     document.getElementById('react-container'));
-
-
-// render component 1
-// this.props.children above allows this text
-React.render(<Note>Hello World</Note>, 
+// render component 1 & 2 simultaneously 
+React.render(<Board count={10}/>, 
     document.getElementById('react-container'));
 
 
+// // render component 2
+// React.render(<Board count={10}/>, 
+//     document.getElementById('react-container'));
 
-
+// // render component 1
+// // this.props.children above allows this text
+// React.render(<Note>Hello World</Note>, 
+//     document.getElementById('react-container'));
