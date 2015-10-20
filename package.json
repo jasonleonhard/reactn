@@ -1,0 +1,24 @@
+{
+  "name": "reactn",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "jquery": "^2.1.4",
+    "bootstrap": "^3.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/un5t0ppab13/reactn.git"
+  },
+  "author": "un5t0ppab13",
+  "license": "All Rights Reserved",
+  "bugs": {
+    "url": "https://github.com/un5t0ppab13/reactn/issues"
+  },
+  "homepage": "https://github.com/un5t0ppab13/reactn#readme"
+}
