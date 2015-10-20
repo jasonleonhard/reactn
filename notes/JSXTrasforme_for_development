@@ -1,0 +1,12 @@
+JSXTrasformer is great for development, but react-tools for production.... so just preprocess all css...
+otherwise you will have to 
+
+sudo npm install -g react-tools # module to not require jsx but just old js
+
+build ( React.createElement("div", null, ... )-> js
+  helloworld.js
+src ( <div>.... )
+  helloworld.js
+index
+
+

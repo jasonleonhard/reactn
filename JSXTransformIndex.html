@@ -18,15 +18,19 @@ so just preprocess all css... otherwise you will have to -->
         <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
         <!-- Latest compiled and minified JavaScript -->
         <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
-      <link rel="stylesheet" type="text/css" href="text/css">
+      <link href="css/style.css" rel="stylesheet" type="text/css" >
 
     <title>React Components</title>
   </head>
   <body>
   <div id="react-container"></div>
+
+
     
+  <!-- <script src="js/MyComponent.js" type="text/jsx"></script> WHEN in js folder-->
   <!-- to be JSXTransformed -->
   <script type="text/jsx">
+
     // DEFINE new HTML tag filled in by properties such as text (different data anytime)
     // children are internal to these components
     var MyComponent = React.createClass({
@@ -45,12 +49,15 @@ so just preprocess all css... otherwise you will have to -->
         <MyComponent text="to"> to </MyComponent>
         <MyComponent text="Reactn"> react </MyComponent>
       </div>
-      , document.getElementById('react-container'));
+      , document.getElementById('react-container')
+    );
 
   </script>
 
 
   <script src="js/Note.js" type="text/jsx" ></script>
+  <script src="js/Template.js" type="text/jsx" ></script>
+
 
 
 <!-- testing boostrap 
