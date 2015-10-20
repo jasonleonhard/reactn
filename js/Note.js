@@ -97,19 +97,32 @@ var Board = React.createClass({
             ]
         };
     },
-
+    
+    // verify postion of notes is unique
+    // set id to index 0 by default, but after creation incriments by 1
+    nextId: function() {
+        this.uniqueId = this.uniqueId || 0;
+        return this.uniqueId++;
+    },
+    
     // removed above auto populating notes for this function
     // save state in array, push text to array, update state of notes in array
+    // pushes/attaches not just note text now, but also id
     add: function(text) {
         var arr = this.state.notes;
-        arr.push(text);
+        arr.push({
+            id: this.nextId(),
+            note: text
+        });
+        // arr.push(text);
         this.setState({notes: arr});
     },
 
-    // store notes state, set current array position to newText, update state of notes array
+    // store notes state (both text & id), set current array position to newText, update state of notes array
     update: function(newText, i) {
         var arr = this.state.notes;
-        arr[i] = newText;
+        arr[i].note = newText;
+        // arr[i] = newText;
         this.setState({notes:arr});
     },
 
@@ -124,11 +137,11 @@ var Board = React.createClass({
     // bc attaching events to notes is simpler and less code
     eachNote: function(note, i) {
         return (
-            <Note key={i}
+            <Note key={note.id}
                 index={i}
                 onChange={this.update}
                 onRemove={this.remove}
-            >{note}</Note>
+            >{note.note}</Note>
         );
     },
 
