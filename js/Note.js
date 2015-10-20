@@ -12,12 +12,14 @@ var Note = React.createClass({
     },
     save: function() {
         // alert('saving note');
-        var val = this.refs.newText.getDOMNode().value; // newText variable will grab value of that text area
-        alert('saving note not fully implimented\n' + val);
+        this.props.onChange(this.refs.newText.getDOMNode().value, this.props.index)
+        // var val = this.refs.newText.getDOMNode().value; // newText variable will grab value of that text area
+        // alert('saving note not fully implimented\n' + val);
         this.setState({editing: false}); // when saved no more editing
     },
     remove: function(){
-        alert('removing note');         
+        this.props.onRemove(this.props.index);
+        // alert('removing note');         
         // this.setState({removing: true});
     },
     renderDisplay: function() {
@@ -64,6 +66,7 @@ var Note = React.createClass({
     // }
 });
 
+
 // component 2 Board, propTypes are validations
 var Board = React.createClass({
     propTypes: {
@@ -80,7 +83,7 @@ var Board = React.createClass({
     getInitialState: function() {
         return {
             notes: [
-            'Send Resume and Cover Letter',
+            'Send Resume + Cover Letter',
             'Call Airbnb',
             'Keep an eye on email and phone',
             'Tech Interview'
@@ -88,16 +91,44 @@ var Board = React.createClass({
         };
 
     },
-    // map creates new array by calling function on every element in array, 
-    // i and note allow us to display all notes by index
+    // store notes state, set current array position to newText, update state of notes array
+    update: function(newText, i) {
+        var arr = this.state.notes;
+        arr[i] = newText;
+        this.setState({notes:arr});
+    },
+    // similar, but splice 1 item at index i, from array when removing, then sets/updates state
+    remove: function(i) {
+        var arr = this.state.notes;
+        arr.splice(i, 1);
+        this.setState({notes: arr});
+    },
+    // eachNote returns note after indexing and either updating or removing, instead of in render function
+    // bc attaching events to notes is simpler and less code
+    eachNote: function(note, i) {
+        return (
+            <Note key={i}
+                index={i}
+                onChange={this.update}
+                onRemove={this.remove}
+            >{note}</Note>
+        );
+    },
+    // map function creates new array by calling function on every element in array, 
+    // key i indexes and note allow us to display all notes by index
     render: function() {
         return( 
             <div className="board">
-                {this.state.notes.map(function(note,i){ 
-                    return ( <Note key={i}>{note}</Note>);
-                })}
+                {this.state.notes.map(this.eachNote)}
             </div>
         );
+        // return( 
+        //     <div className="board">
+        //         {this.state.notes.map(function(note,i){ 
+        //             return (<Note key={i}>{note}</Note>); // moved to eachNote
+        //         })}
+        //     </div>
+        // );
         // return <div className="board">{this.props.count}</div>
     }
 });
