@@ -1,0 +1,35 @@
+<!-- JSXTrasformer is great for development, but sudo npm install -g react-tools for production.... 
+so just preprocess all css... otherwise you will have to -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://fb.me/react-0.13.3.min.js"></script>
+    <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+    <title>React Components</title>
+  </head>
+  <body>
+  <div id="react-container"></div>
+  
+  <!-- to be JSXTransformed -->
+  <script type="text/jsx">
+
+    // DEFINE new HTML tag
+    var MyComponent = React.createClass({
+      render: function() {
+        return <div>My React Component</div>;
+      }
+    });
+
+    // CALL wrapped in div container
+    React.render( 
+      <div>
+        <MyComponent />
+        <MyComponent />
+        <MyComponent />
+      </div>
+      , document.getElementById('react-container'));
+
+  </script>
+
+  </body>
+</html>
