@@ -15,8 +15,11 @@ so just preprocess all css... otherwise you will have to -->
 
     // DEFINE new HTML tag
     var MyComponent = React.createClass({
-      render: function() {
-        return <div>My React Component</div>;
+      render: function(){
+        return  <div>
+                  <h1> {this.props.text} </h1>
+                  <p></p>
+                </div>;
       }
     });
 
