@@ -1,0 +1,70 @@
+<!-- JSXTrasformer is great for development, but sudo npm install -g react-tools for production.... 
+so just preprocess all css... otherwise you will have to -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Latest compiled and minified CSS -->
+    <!-- npm module method -->
+      <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+      <link rel="stylesheet" href="./node_modules/bootstrap/dist/js/bootstrap.min.js">
+      <link rel="stylesheet" href="./node_modules/jquery/dist/jquery.min.js">
+      
+    <!-- externally cached option-->
+      <script src="https://fb.me/react-0.13.3.min.js"></script>
+      <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
+      <link href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.min.css" rel="stylesheet" type="text/css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+        <!-- Optional theme -->
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css"> -->
+        <!-- Latest compiled and minified JavaScript -->
+        <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> -->
+      <link href="css/style.css" rel="stylesheet" type="text/css" >
+
+    <title>React Components</title>
+  </head>
+  <body>
+  <div id="react-container"></div>
+
+
+    
+  <!-- <script src="js/MyComponent.js" type="text/jsx"></script> WHEN in js folder-->
+  <!-- to be JSXTransformed -->
+  <script type="text/jsx">
+
+    // DEFINE new HTML tag filled in by properties such as text (different data anytime)
+    // children are internal to these components
+    var MyComponent = React.createClass({
+      render: function(){
+        return (
+        <div>
+          <h1> {this.props.text} </h1>
+          <p> {this.props.children} </p>
+        </div>;
+        )
+      }
+    });
+
+    // CALL wrapped in div container
+    React.render( 
+      <div>
+        <MyComponent text="Welcome"> time </MyComponent>
+        <MyComponent text="to"> to </MyComponent>
+        <MyComponent text="Reactn"> react </MyComponent>
+      </div>
+      , document.getElementById('react-container')
+    );
+
+  </script>
+
+
+  <script src="js/Note.js" type="text/jsx" ></script>
+<!--   <script src="js/Template.js" type="text/jsx" ></script> -->
+
+
+<!-- testing boostrap 
+<button type="button" class="btn btn-default btn-lg">
+  <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+</button> -->
+
+  </body>
+</html>
