@@ -76,6 +76,7 @@ var Board = React.createClass({
             }
         }
     },
+    // notes array becomes the vies sticky notes
     getInitialState: function() {
         return {
             notes: [
